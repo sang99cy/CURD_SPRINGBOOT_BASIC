@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}" />
+<link th:rel="stylesheet"
+	th:href="@{webjars/font-awesome/5.11.2/css/all.css} " />
+<link rel="stylesheet" th:href="@{/custom.css}">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<a th:href="@{/page/1}">Home</a>
+		</div>
+		<div class="row">
+			<div class="col-6 col-sm-3">
+				<div class="form-add">
+					<form th:action="@{/saveEmployee}" th:object="${employee}"
+						method="POST">
+						<div class="title-add-form">
+							<p>ADD EMPLOYEE</p>
+						</div>
+						<hr />
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class=form-label>FIRST
+								NAME:</label> <input class="form-control" type="text"
+								th:field="*{firstName}" placeholder="nhập First Name" />
+								<p style="color: red;" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Name not null</p>
+						</div>
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">LAST
+								NAME:</label> <input class="form-control" type="text"
+								th:field="*{lastName}" placeholder="nhập Last Name" />
+								<p style="color: red;" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name not null</p>
+						</div>
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">EMAIL:
+								</label> <input class="form-control" type="text"
+								th:field="*{emailId}" placeholder="nhập email">
+								<p style="color: red;" th:if="${#fields.hasErrors('emailId')}" th:errors="*{emailId}">Email not null</p>
+						</div>
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">PASSWORD:
+								</label> <input class="form-control" type="password"
+								th:field="*{passWord}" placeholder="nhập password...">
+								<p style="color: red;" th:if="${#fields.hasErrors('passWord')}" th:errors="*{passWord}">Password not null</p>
+						</div>
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">PHONE:
+								</label> <input class="form-control" type="text"
+								th:field="*{phoneNumber}" placeholder="nhập Phone Number">
+								<p style="color: red;" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Phone Number not null</p>
+						</div>
+						<div class="mb-3">
+							<button type="submit" class="btn btn-info">
+								<i class="fas fa-plus">SAVE</i>
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

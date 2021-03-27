@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Update infomation Employee</title>
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}" />
+<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css} "/>	
+<link rel="stylesheet" th:href="@{/custom.css}">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<a th:href="@{/}">Home</a>
+		</div>
+		<div class="row">
+			<div class="col-6 col-sm-3">
+				<div class="form-add">
+					<form th:action="@{/saveEmployee}" th:object="${employee}"
+						method="POST">
+						<div class="title-add-form">
+							<p>ADD EMPLOYEE</p>
+						</div>
+						<hr />
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class=form-label>FIRST
+								NAME:</label> <input class="form-control" type="text"
+								th:field="*{firstName}" placeholder="Employee First Name" />
+						</div>
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">LAST
+								NAME:</label> <input class="form-control" type="text"
+								th:field="*{lastName}" placeholder="Employee Last Name" />
+						</div>
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">LAST
+								NAME:</label> <input class="form-control" type="text"
+								th:field="*{emailId}" placeholder="Employee Email">
+						</div>
+						<div class="mb-3">
+							<button type="submit" class="btn btn-info"><i class="fas fa-plus">SAVE</i></button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

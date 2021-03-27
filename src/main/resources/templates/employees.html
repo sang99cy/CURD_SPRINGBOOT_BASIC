@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Danh sách Employee</title>
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}" />
+<link th:rel="stylesheet"
+	th:href="@{/webjars/font-awesome/5.11.2/css/all.css} " />
+<link rel="stylesheet" th:href="@{/custom.css}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<!--nav bar -->
+		<nav class="navbar navbar-expand-sm"
+			style="margin-top: 5px; margin-bottom: 5px;background-image: url('https://wallpapercave.com/wp/wp8164660.jpg');">
+			<ul class="navbar-nav">
+				<li class="nav-item active"><a class="nav-link" href="#"
+					th:text="${appName}">Active</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/page/1}">HOME</a></li>
+				<li class="nav-item"><a class="nav-link product" href="#">Product</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">Login</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
+			</ul>
+		</nav>
+		<!--kết thúc navbar  -->
+		<div class="main-employee">
+			<div class="row">
+				<div class="col-4 col-sm-3 form-themmoi">
+					<!-- <a class="btn btn-primary"
+						th:href="@{/showNewEmployeeForm}"><i class="fas fa-plus">Add
+							Employee</i></a> -->
+					<!--modedal  -->
+					<div th:replace="~{/layout/components::popup-add-employee}">
+					</div>
+					<!-- modedal -->
+				</div>
+
+				<div class="col-4 col-sm-3 input-search">
+					<form th:action="@{/page/1}" method="get">
+						<div class="row no-gutters">
+							<div class="col">
+								<input
+									class="form-control border-secondary border-right-0 rounded-0"
+									type="text" name="firstName" id="example-search-input4"
+									placeholder="search">
+							</div>
+							<div class="col-auto">
+								<button
+									class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right"
+									type="submit">
+									<i class="fa fa-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+
+				<!-- <div class="col-4 col-sm-3 input-search">
+					<form th:action="@{/page/1}" method="get">
+						<input class="form-control" name="firstName" type="search"
+							placeholder="Tim kiem">
+						<li class="fas fa-search"></li>
+						</input>
+					</form>
+				</div> -->
+			</div>
+			<!--The end Modal  -->
+			<!--table employee  -->
+			<table class="table table-primary">
+				<thead>
+					<tr class="table">
+						<th scope="col">ID</th>
+						<th scope="col">FIRSTNAME</th>
+						<th scope="col">LASTNAME</th>
+						<th scope="col">EMAIL</th>
+						<!-- <th scope="col">PASSWORD</th> -->
+						<th scope="col">PHONENUMBER</th>
+						<th scope="col" colspan="4">ACTION</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="table-success" th:each="employee : ${employees}">
+						<td th:text="${employee.id}"></td>
+						<td th:text="${employee.firstName}"></td>
+						<td th:text="${employee.lastName}"></td>
+						<td th:text="${employee.emailId}"></td>
+						<!-- <td th:text="${employee.passWord}"></td> -->
+						<td th:text="${employee.phoneNumber}"></td>
+						<td><a class="btn btn-primary"
+							th:href="@{'/showFormForUpdate/' +${employee.id}}"><i
+								class="fas fa-edit"></i></a></td>
+						<td><a class="btn btn-primary"
+							th:href="@{'/deleteEmployee/' +${employee.id}}"><i
+								class="fas fa-trash-alt"></i></a></td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="row">
+				<div class="pagination">
+					Total Items: [[${totalItems}]] - [[${currentPage}]] of
+					[[${totalPages}]] &nbsp; <a th:if="${currentPage > 1}"
+						th:href="@{'/page/1'}">First</a> <span
+						th:unless="${currentPage > 1}">First</span> &nbsp; &nbsp; <a
+						th:if="${currentPage > 1}"
+						th:href="@{'/page/' + ${currentPage - 1}}">Previous</a> <span
+						th:unless="${currentPage > 1}">Previous</span> &nbsp; &nbsp; <span
+						th:each="i : ${#numbers.sequence(1,totalPages)}"> <a
+						th:if="${i != currentPage}" th:href="@{'/page/' + ${i}}">[[${i}]]</a>
+						<span th:unless="${i != currentPage}">[[${i}]]</span> &nbsp;
+						&nbsp;
+					</span> <a th:if="${currentPage < totalPages}"
+						th:href="@{'/page/' + ${currentPage + 1}}">Next</a> <span
+						th:unless="${currentPage < totalPages}">Next</span> &nbsp; &nbsp;
+
+					<a th:if="${currentPage <  totalPages}"
+						th:href="@{'/page/' + ${totalPages}}">Last</a> <span
+						th:unless="${currentPage < totalPages}">Last</span> &nbsp; &nbsp;
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<script th:src="@{/js/employee.js}"></script>
+	<script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
+	<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+	<!-- script cho poover -->
+	<script type="text/javascript">
+	$(function () {
+	  $('[data-toggle="popover"]').popover()
+	})
+	$('.popover-dismiss').popover({
+	  trigger: 'focus'
+	})
+</script>
+</body>
+</html>

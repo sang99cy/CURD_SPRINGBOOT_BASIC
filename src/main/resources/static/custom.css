@@ -1,0 +1,58 @@
+/*  */
+body{
+	/* background-color:  rgb(0, 128, 255); */
+	background-image: url("https://i.pinimg.com/originals/60/c2/17/60c2177448cbf90408ed1df7da78cf00.jpg");
+}
+.form-themmoi{
+	margin-bottom: 10px;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+.input-search{
+	margin-top:10px;
+	width: 400px;
+}
+
+.form-add{
+	width: 500px;
+	height: auto;
+	border: 1px solid black;
+	box-shadow: 7px 5px 5px 5px grey;
+	margin-left: 100%;
+	margin-top: 20%;
+	padding: 5px;
+	background-image: url("https://wallpapercave.com/wp/wp8164660.jpg");
+}
+.form-add label{
+   color: white;
+}
+.form-add button{
+	margin-left: 5px;
+}
+.title-add-form{
+	text-align: center;
+	color: white;
+	font-family: fantasy;
+	font-weight: 20px;
+	padding-top: 5px;
+}
+.pagination{
+	margin-left: 30%;
+	color: blue;
+	background-color: white;
+}
+.main-employee{
+	margin-top:10px;
+	height: auto;
+	border: 1px solid black;
+	/* box-shadow: 3px 5px 5px 5px blue; */
+	margin-bottom: 20px;
+	background-image: url("https://i.pinimg.com/originals/b8/4f/41/b84f4195a6d33c93d01111287c0c7b7e.jpg");
+}
+.navbar:hover{
+	box-shadow: 5px 5px 3px 3px grey;
+}
+
+.table-border{
+	color: blue;
+}
